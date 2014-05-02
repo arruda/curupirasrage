@@ -33,8 +33,8 @@ Se esse for o caso faça o seguinte:
 * Clique com botão direito no projeto, e vá em **properties**
 * Selecione a categoria **Android**
 * na caixa de **Library** remova a referencia para o projeto appcompat_v4(provavelmente com um X vermelho na frente)
-* clique em Add e selecione o projto app_compat_v4 do seu workspace (**veja OBS abaixo**)
-* Se der problema "Jar mismatch!..." remova o arquivo **libs/android-support-v4.jar** de seu projeto **app_compat_v4** e tudo deverá funcionar.
+* clique em Add e selecione o projto appcompat_v7 do seu workspace (**veja OBS abaixo**)
+* Se der problema "Jar mismatch!..." remova o arquivo **libs/android-support-v4.jar** de seu projeto **app_compat_v7** e tudo deverá funcionar.
 
 **OBS**: se não possuir o projeto em seu workspace veja como acha-lo aqui(na parte **Using Eclipse**) https://developer.android.com/tools/support-library/setup.html#libs-with-res
 
