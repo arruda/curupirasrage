@@ -7,5 +7,6 @@
     <string name="titulo_jogo">Curupira\'s Rage</string>
     <string name="subtitulo_jogo">Welcome to the Jungle!</string>
     <string name="btn_novo_jogo">Novo jogo</string>
+    <string name="btn_dificuldade">Dificuldade</string>
 
 </resources>
