@@ -6,5 +6,29 @@
     android:background="@drawable/curupira_hd_002"
     tools:context="com.curupirasrage.MainActivity"
     tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/titulo_jogo"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffff8800"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:text="@string/subtitulo_jogo"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ff99cc00"
+        android:textSize="24sp"
+        android:textStyle="bold" /> 
     
 </RelativeLayout>

@@ -4,5 +4,7 @@
     <string name="app_name">curupirasrage</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="titulo_jogo">Curupira\'s Rage</string>
+    <string name="subtitulo_jogo">Welcome to the Jungle!</string>
 
 </resources>
