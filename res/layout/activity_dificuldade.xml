@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/curupira_hd_002"
+    tools:context="com.curupirasrage.MainActivity"
+    tools:ignore="MergeRootFrame" >
+    
+    <Button
+        android:id="@+id/btnFacil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/btnNormal"
+        android:layout_alignRight="@+id/btnNormal"
+        android:layout_marginTop="174dp"
+        android:background="@android:drawable/btn_default"
+        android:text="@string/btnFacil" />
+
+    <Button
+        android:id="@+id/btnNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnFacil"
+        android:layout_marginTop="16dp"
+        android:background="@android:drawable/btn_default"
+        android:text="@string/btnNormal" />
+    
+    <Button
+        android:id="@+id/btnDificil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnNormal"
+        android:layout_alignRight="@+id/btnNormal"
+        android:layout_below="@+id/btnNormal"
+        android:layout_marginTop="23dp"
+        android:background="@android:drawable/btn_default"
+        android:text="@string/btnDificil" />
+        
+</RelativeLayout>
+    

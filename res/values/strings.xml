@@ -8,5 +8,9 @@
     <string name="subtitulo_jogo">Welcome to the Jungle!</string>
     <string name="btn_novo_jogo">Novo jogo</string>
     <string name="btn_dificuldade">Dificuldade</string>
+    <string name="btnFacil">EASY</string>
+    <string name="btnNormal">NORMAL</string>
+    <string name="btnDificil">HARD</string>
+    <string name="title_activity_dificuldade">DificuldadeActivity</string>
 
 </resources>
