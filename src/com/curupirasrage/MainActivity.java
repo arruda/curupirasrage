@@ -20,18 +20,24 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		Button btnDificuldade = (Button) findViewById(R.id.btn_dificuldade);
-		btnDificuldade.setOnClickListener(new View.OnClickListener() {
-			
+		Button btnNovoJogo = (Button) findViewById(R.id.btn_novo_jogo);
+		btnNovoJogo.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, DificuldadeActivity.class);
 			    startActivity(intent);
 			}
 		});
-		
+		Button btnDificuldade = (Button) findViewById(R.id.btn_dificuldade);
+		btnDificuldade.setOnClickListener(new View.OnClickListener() {
 
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainActivity.this, DificuldadeActivity.class);
+			    startActivity(intent);
+			}
+		});
 	}
 
 	@Override

@@ -3,12 +3,14 @@ package com.curupirasrage;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.os.Build;
 
 public class DificuldadeActivity extends ActionBarActivity {
@@ -17,8 +19,43 @@ public class DificuldadeActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dificuldade);
+		Button btnDificuldade1 = (Button) findViewById(R.id.btnFacil);
+		Button btnDificuldade2 = (Button) findViewById(R.id.btnNormal);
+		Button btnDificuldade3 = (Button) findViewById(R.id.btnDificil);
+		btnDificuldade1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(DificuldadeActivity.this, GameActivity.class);
+				Bundle params = new Bundle(); 
+				int dificuldade = 2;
+				params.putInt("dificuldade",dificuldade);
+				intent.putExtras(params); 
+			    startActivity(intent);
+			}
+		});
+		btnDificuldade2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(DificuldadeActivity.this, GameActivity.class);
+			    Bundle params = new Bundle(); 
+				int dificuldade = 2;
+				params.putInt("dificuldade",dificuldade);
+				intent.putExtras(params); 
+			    startActivity(intent);
+			}
+		});
+		btnDificuldade3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(DificuldadeActivity.this, GameActivity.class);
+				Bundle params = new Bundle(); 
+				int dificuldade = 3;
+				params.putInt("dificuldade",dificuldade);
+				intent.putExtras(params); 
+			    startActivity(intent);
+			}
+		});
 	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
