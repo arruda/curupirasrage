@@ -29,6 +29,17 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ff99cc00"
         android:textSize="24sp"
-        android:textStyle="bold" /> 
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_novo_jogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
+        android:text="@string/btn_novo_jogo" 
+        android:background="@android:drawable/btn_default"
+        />
     
 </RelativeLayout>
