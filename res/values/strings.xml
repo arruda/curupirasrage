@@ -12,5 +12,6 @@
     <string name="btnNormal">NORMAL</string>
     <string name="btnDificil">HARD</string>
     <string name="title_activity_dificuldade">DificuldadeActivity</string>
+    <string name="title_activity_game">GameActivity</string>
 
 </resources>
