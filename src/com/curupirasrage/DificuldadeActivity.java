@@ -22,6 +22,7 @@ public class DificuldadeActivity extends ActionBarActivity {
 		Button btnDificuldade1 = (Button) findViewById(R.id.btnFacil);
 		Button btnDificuldade2 = (Button) findViewById(R.id.btnNormal);
 		Button btnDificuldade3 = (Button) findViewById(R.id.btnDificil);
+		
 		btnDificuldade1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -33,6 +34,7 @@ public class DificuldadeActivity extends ActionBarActivity {
 			    startActivity(intent);
 			}
 		});
+		
 		btnDificuldade2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -44,6 +46,7 @@ public class DificuldadeActivity extends ActionBarActivity {
 			    startActivity(intent);
 			}
 		});
+		
 		btnDificuldade3.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
