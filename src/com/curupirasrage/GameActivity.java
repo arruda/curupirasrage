@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
@@ -23,6 +24,8 @@ public class GameActivity extends Activity {
 	public Boolean gameover() {
 		return false;
 	}
+	
+	protected List<ImageButton> cacadores;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,26 +45,38 @@ public class GameActivity extends Activity {
 		ImageButton btn42 = (ImageButton) findViewById(R.id.btn42);
 		ImageButton btn43 = (ImageButton) findViewById(R.id.btn43);
 		
-		List<ImageButton> list = new ArrayList<ImageButton>();
+		cacadores = new ArrayList<ImageButton>();
 
-//		btn11.setVisibility(ImageButton.INVISIBLE);
-		list.add(btn11);
-		list.add(btn12);
-		list.add(btn13);
-		list.add(btn21);
-		list.add(btn22);
-		list.add(btn23);
-		list.add(btn31);
-		list.add(btn32);
-		list.add(btn33);
-		list.add(btn41);
-		list.add(btn42);
-		list.add(btn43);
+		cacadores.add(btn11);
+		cacadores.add(btn12);
+		cacadores.add(btn13);
+		cacadores.add(btn21);
+		cacadores.add(btn22);
+		cacadores.add(btn23);
+		cacadores.add(btn31);
+		cacadores.add(btn32);
+		cacadores.add(btn33);
+		cacadores.add(btn41);
+		cacadores.add(btn42);
+		cacadores.add(btn43);
+		
+		for (ImageButton cacador : cacadores) {
+			cacador.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					v.setVisibility(ImageButton.INVISIBLE);
+
+				}
+			});
+		}
+
+		//nao usar esse metodo so to usando pra forcar a ficar esses 2 visiveis
+		changeButtonVisibility(0,ImageButton.VISIBLE);
+		changeButtonVisibility(1,ImageButton.VISIBLE);
 		
 		
-		changeButtonVisibility(list);
-		
-		Log.i("visibilidade", String.valueOf(list.get(1).getVisibility()));
+		Log.i("visibilidade", String.valueOf(cacadores.get(1).getVisibility()));
 
 		Intent i = getIntent();
 		int dificuldade = i.getIntExtra("Dificuldade", 1);
@@ -95,11 +110,8 @@ public class GameActivity extends Activity {
 		return true;
 	}
 
-	public void changeButtonVisibility(List<ImageButton> list){
-		
-		
-		
-		list.get(1).setVisibility(0);
+	public void changeButtonVisibility(int pos, int visibility){
+		cacadores.get(pos).setVisibility(visibility);
 		
 	}
 		
