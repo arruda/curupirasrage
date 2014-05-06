@@ -13,5 +13,6 @@
     <string name="btnDificil">HARD</string>
     <string name="title_activity_dificuldade">DificuldadeActivity</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="cacador">Caçador</string>
 
 </resources>

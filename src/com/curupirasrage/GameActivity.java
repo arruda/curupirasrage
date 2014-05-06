@@ -13,6 +13,7 @@ import java.util.TimerTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -28,21 +29,22 @@ public class GameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 		
-		Button btn11 = (Button) findViewById(R.id.btn11);
-		Button btn12 = (Button) findViewById(R.id.btn12);
-		Button btn13 = (Button) findViewById(R.id.btn13);
-		Button btn21 = (Button) findViewById(R.id.btn21);
-		Button btn22 = (Button) findViewById(R.id.btn22);
-		Button btn23 = (Button) findViewById(R.id.btn23);
-		Button btn31 = (Button) findViewById(R.id.btn31);
-		Button btn32 = (Button) findViewById(R.id.btn32);
-		Button btn33 = (Button) findViewById(R.id.btn33);
-		Button btn41 = (Button) findViewById(R.id.btn41);
-		Button btn42 = (Button) findViewById(R.id.btn42);
-		Button btn43 = (Button) findViewById(R.id.btn43);
+		ImageButton btn11 = (ImageButton) findViewById(R.id.btn11);
+		ImageButton btn12 = (ImageButton) findViewById(R.id.btn12);
+		ImageButton btn13 = (ImageButton) findViewById(R.id.btn13);
+		ImageButton btn21 = (ImageButton) findViewById(R.id.btn21);
+		ImageButton btn22 = (ImageButton) findViewById(R.id.btn22);
+		ImageButton btn23 = (ImageButton) findViewById(R.id.btn23);
+		ImageButton btn31 = (ImageButton) findViewById(R.id.btn31);
+		ImageButton btn32 = (ImageButton) findViewById(R.id.btn32);
+		ImageButton btn33 = (ImageButton) findViewById(R.id.btn33);
+		ImageButton btn41 = (ImageButton) findViewById(R.id.btn41);
+		ImageButton btn42 = (ImageButton) findViewById(R.id.btn42);
+		ImageButton btn43 = (ImageButton) findViewById(R.id.btn43);
 		
-		List<Button> list = new ArrayList<Button>();
+		List<ImageButton> list = new ArrayList<ImageButton>();
 
+//		btn11.setVisibility(ImageButton.INVISIBLE);
 		list.add(btn11);
 		list.add(btn12);
 		list.add(btn13);
@@ -59,7 +61,7 @@ public class GameActivity extends Activity {
 		
 		changeButtonVisibility(list);
 		
-		
+		Log.i("visibilidade", String.valueOf(list.get(1).getVisibility()));
 
 		Intent i = getIntent();
 		int dificuldade = i.getIntExtra("Dificuldade", 1);
@@ -93,7 +95,7 @@ public class GameActivity extends Activity {
 		return true;
 	}
 
-	public void changeButtonVisibility(List<Button> list){
+	public void changeButtonVisibility(List<ImageButton> list){
 		
 		
 		
