@@ -1,6 +1,7 @@
 package com.curupirasrage;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -22,7 +23,6 @@ public class GameActivity extends Activity {
 		return false;
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public class GameActivity extends Activity {
 		Button btn42 = (Button) findViewById(R.id.btn42);
 		Button btn43 = (Button) findViewById(R.id.btn43);
 		
-		List<Button> list = null;
+		List<Button> list = new ArrayList<Button>();
 
 		list.add(btn11);
 		list.add(btn12);
