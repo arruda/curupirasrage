@@ -27,19 +27,7 @@ public class GameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
-		/*
-		 * ImageButton im1 = (ImageButton) findViewById(R.id.imBtn1);
-		 * ImageButton im2 = (ImageButton) findViewById(R.id.imBtn2);
-		 * ImageButton im3 = (ImageButton) findViewById(R.id.imBtn3);
-		 * ImageButton im4 = (ImageButton) findViewById(R.id.imBtn4);
-		 * ImageButton im5 = (ImageButton) findViewById(R.id.imBtn5);
-		 * ImageButton im6 = (ImageButton) findViewById(R.id.imBtn6);
-		 * ImageButton im7 = (ImageButton) findViewById(R.id.imBtn7);
-		 * ImageButton im8 = (ImageButton) findViewById(R.id.imBtn8);
-		 * ImageButton im9 = (ImageButton) findViewById(R.id.imBtn9);
-		 * ImageButton im10 = (ImageButton) findViewById(R.id.imBtn10);
-		 */
-
+		
 		Button btn11 = (Button) findViewById(R.id.btn11);
 		Button btn12 = (Button) findViewById(R.id.btn12);
 		Button btn13 = (Button) findViewById(R.id.btn13);
@@ -107,18 +95,26 @@ public class GameActivity extends Activity {
 
 	public void changeButtonVisibility(List<Button> list){
 		
-		for (Button button : list) {
-			
-			try {
-				button.setVisibility(0);
-				Thread.sleep(4000);
-				button.setVisibility(1);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		
+		
+		list.get(1).setVisibility(0);
 		
 	}
+		
+	
+	
+//		for (Button button : list) {
+//			
+//			try {
+//				button.setVisibility(0);
+//				Thread.sleep(4000);
+//				button.setVisibility(1);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+		
+	
 
 }
