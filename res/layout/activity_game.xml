@@ -13,28 +13,28 @@
             android:id="@+id/btn11"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
             android:background="@null"
-            />
+            android:contentDescription="@string/cacador"
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btn12"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"             
-            android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
+            android:layout_height="fill_parent"
             android:background="@null"
-            />
+            android:contentDescription="@string/cacador"
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btn13"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"             
+            android:layout_height="fill_parent"
+            android:background="@null"
             android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
-            android:background="@null" 
-            />
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
     </TableRow>
     <TableRow 
@@ -44,29 +44,29 @@
         <ImageButton
             android:id="@+id/btn21"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"             
+            android:layout_height="fill_parent"
+            android:background="@null"
             android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
-            android:background="@null" 
-            />
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btn22"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" 
-            android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
+            android:layout_height="fill_parent"
             android:background="@null"
-            />
+            android:contentDescription="@string/cacador"
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btn23"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"             
+            android:layout_height="fill_parent"
+            android:background="@null"
             android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
-            android:background="@null" 
-            />
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
     </TableRow>
     <TableRow 
@@ -76,29 +76,29 @@
         <ImageButton
             android:id="@+id/btn31"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"             
+            android:layout_height="fill_parent"
+            android:background="@null"
             android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
-            android:background="@null" 
-            />
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btn32"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"             
-            android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
+            android:layout_height="fill_parent"
             android:background="@null"
-             />
+            android:contentDescription="@string/cacador"
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btn33"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" 
-            android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
+            android:layout_height="fill_parent"
             android:background="@null"
-            />
+            android:contentDescription="@string/cacador"
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
     </TableRow>
     <TableRow 
@@ -108,29 +108,29 @@
         <ImageButton
             android:id="@+id/btn41"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"             
-            android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
+            android:layout_height="fill_parent"
             android:background="@null"
-            />
+            android:contentDescription="@string/cacador"
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btn42"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"              
-            android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
+            android:layout_height="fill_parent"
             android:background="@null"
-            />
+            android:contentDescription="@string/cacador"
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
         <ImageButton
             android:id="@+id/btn43"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"             
-            android:contentDescription="@string/cacador"
-            android:src="@drawable/cacador1" 
+            android:layout_height="fill_parent"
             android:background="@null"
-             />
+            android:contentDescription="@string/cacador"
+            android:src="@drawable/cacador1"
+            android:visibility="invisible" />
 
     </TableRow>
 </TableLayout>
