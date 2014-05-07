@@ -60,27 +60,17 @@ public class GameActivity extends Activity {
 		cacadores.add(btn42);
 		cacadores.add(btn43);
 		
-		Random gerador = new Random();
-		int index = gerador.nextInt(12);
-		
 		for (ImageButton cacador : cacadores) {
 			cacador.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					v.setVisibility(ImageButton.INVISIBLE);
-
 				}
 			});
 		}
-
-		//nao usar esse metodo so to usando pra forcar a ficar esses 2 visiveis
-		//changeButtonVisibility(0,ImageButton.VISIBLE);
-		//changeButtonVisibility(1,ImageButton.VISIBLE);
-
-		changeButtonVisibility(index, ImageButton.VISIBLE);
 		
-		
+		showRandomHunter();
 		
 		Log.i("visibilidade", String.valueOf(cacadores.get(1).getVisibility()));
 
@@ -117,8 +107,14 @@ public class GameActivity extends Activity {
 	}
 
 	public void changeButtonVisibility(int pos, int visibility){
-		cacadores.get(pos).setVisibility(visibility);
-		
+		cacadores.get(pos).setVisibility(visibility);		
+	}
+	
+	public void showRandomHunter()
+	{
+		Random gerador = new Random();
+		int index = gerador.nextInt(12);
+		changeButtonVisibility(index, ImageButton.VISIBLE);
 	}
 		
 	
