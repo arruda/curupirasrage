@@ -60,6 +60,9 @@ public class GameActivity extends Activity {
 		cacadores.add(btn42);
 		cacadores.add(btn43);
 		
+		Random gerador = new Random();
+		int index = gerador.nextInt(12);
+		
 		for (ImageButton cacador : cacadores) {
 			cacador.setOnClickListener(new View.OnClickListener() {
 				
@@ -72,8 +75,11 @@ public class GameActivity extends Activity {
 		}
 
 		//nao usar esse metodo so to usando pra forcar a ficar esses 2 visiveis
-		changeButtonVisibility(0,ImageButton.VISIBLE);
-		changeButtonVisibility(1,ImageButton.VISIBLE);
+		//changeButtonVisibility(0,ImageButton.VISIBLE);
+		//changeButtonVisibility(1,ImageButton.VISIBLE);
+
+		changeButtonVisibility(index, ImageButton.VISIBLE);
+		
 		
 		
 		Log.i("visibilidade", String.valueOf(cacadores.get(1).getVisibility()));

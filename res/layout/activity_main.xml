@@ -35,22 +35,10 @@
         android:id="@+id/btn_novo_jogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_dificuldade"
-        android:layout_alignRight="@+id/btn_dificuldade"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="170dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="163dp"
         android:background="@android:drawable/btn_default"
         android:text="@string/btn_novo_jogo" />
-
-    <Button
-        android:id="@+id/btn_dificuldade"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_novo_jogo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="@string/btn_dificuldade"
-        android:background="@android:drawable/btn_default"
-        />
     
 </RelativeLayout>
