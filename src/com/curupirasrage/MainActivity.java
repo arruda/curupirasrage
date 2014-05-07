@@ -29,15 +29,6 @@ public class MainActivity extends ActionBarActivity {
 			    startActivity(intent);
 			}
 		});
-		Button btnDificuldade = (Button) findViewById(R.id.btn_dificuldade);
-		btnDificuldade.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, DificuldadeActivity.class);
-			    startActivity(intent);
-			}
-		});
 	}
 
 	@Override
