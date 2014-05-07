@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import java.lang.Object;
 import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
@@ -31,7 +32,27 @@ public class GameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
-		
+		final Handler handler = new Handler();
+		final Runnable naoClicado = new Runnable()
+		{
+		    public void run() 
+		    {
+		    	hideHunter();
+			    showRandomHunter();
+			    handler.postDelayed(this, 3000);
+		    }
+		};
+
+		handler.postDelayed(naoClicado, 3000);
+		final Runnable Clicado = new Runnable()
+		{
+		    public void run() 
+		    {
+			    showRandomHunter();
+			    handler.postDelayed(naoClicado, 3000);
+		    }
+		};
+
 		ImageButton btn11 = (ImageButton) findViewById(R.id.btn11);
 		ImageButton btn12 = (ImageButton) findViewById(R.id.btn12);
 		ImageButton btn13 = (ImageButton) findViewById(R.id.btn13);
@@ -66,17 +87,18 @@ public class GameActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					v.setVisibility(ImageButton.INVISIBLE);
-					showRandomHunter();
+					handler.removeCallbacks(naoClicado);
+					handler.postDelayed(Clicado, 0);
 				}
 			});
 		}
-		
-	    showRandomHunter();
+
+
 	    
 		Log.i("visibilidade", String.valueOf(cacadores.get(1).getVisibility()));
 
 		Intent i = getIntent();
-		int dificuldade = i.getIntExtra("Dificuldade", 1);
+		int dificuldade = i.getIntExtra("dificuldade", 1);
 		if (dificuldade == 1) {
 			/*
 			 * while(!gameover()){ try { //4 segundos Thread.sleep(4000); }
@@ -117,6 +139,12 @@ public class GameActivity extends Activity {
 		int index = gerador.nextInt(12);
 		changeButtonVisibility(index, ImageButton.VISIBLE);
 	}
+	public void hideHunter()
+	{
+		for(int i=0;i<12;i++){
+		changeButtonVisibility(i, ImageButton.INVISIBLE);}
+	}
+		
 		
 	
 	
