@@ -66,12 +66,13 @@ public class GameActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					v.setVisibility(ImageButton.INVISIBLE);
+					showRandomHunter();
 				}
 			});
 		}
 		
-		showRandomHunter();
-		
+	    showRandomHunter();
+	    
 		Log.i("visibilidade", String.valueOf(cacadores.get(1).getVisibility()));
 
 		Intent i = getIntent();
