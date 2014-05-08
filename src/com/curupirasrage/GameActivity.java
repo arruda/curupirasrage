@@ -22,8 +22,12 @@ import android.widget.ImageButton;
 import android.widget.TimePicker;
 
 public class GameActivity extends Activity {
-	public Boolean gameover() {
-		return false;
+	int erros=0;
+	public int getErros(){
+		return erros;
+	}
+	public void setErros(int erros){
+		this.erros=erros;
 	}
 	
 	protected List<ImageButton> cacadores;
@@ -61,24 +65,26 @@ public class GameActivity extends Activity {
 		cacadores.add(btn42);
 		cacadores.add(btn43);
 		final Handler handler = new Handler();
+
 		
 
 		Log.i("visibilidade", String.valueOf(cacadores.get(1).getVisibility()));
 
 		Intent i = getIntent();
 		int dificuldade = i.getIntExtra("dificuldade", 1);
-		
 		if (dificuldade == 1) {
+
 			final Runnable naoClicadoFacil = new Runnable()
 			{
 			    public void run() 
 			    {
 			    	hideHunter();
 				    showRandomHunter();
-				    handler.postDelayed(this, 3000);
+			    handler.postDelayed(this, 3000);
+		    	
 			    }
 			};
-			handler.postDelayed(naoClicadoFacil, 3000);
+			
 			final Runnable ClicadoFacil = new Runnable()
 			{
 			    public void run() 
@@ -87,7 +93,8 @@ public class GameActivity extends Activity {
 				    handler.postDelayed(naoClicadoFacil, 3000);
 			    }
 			};
-			
+
+			handler.postDelayed(ClicadoFacil, 3000);
 			for (ImageButton cacador : cacadores) {
 				cacador.setOnClickListener(new View.OnClickListener() {
 					
@@ -101,6 +108,7 @@ public class GameActivity extends Activity {
 			}
 		}
 		
+		
 		if (dificuldade == 2) {
 			final Runnable naoClicadoNormal = new Runnable()
 			{
@@ -111,7 +119,7 @@ public class GameActivity extends Activity {
 				    handler.postDelayed(this, 2000);
 			    }
 			};
-			handler.postDelayed(naoClicadoNormal, 2000);
+			
 			
 			final Runnable ClicadoNormal = new Runnable()
 			{
@@ -120,8 +128,9 @@ public class GameActivity extends Activity {
 				    showRandomHunter();
 				    handler.postDelayed(naoClicadoNormal, 2000);
 			    }
+			    
 			};
-			
+			handler.postDelayed(ClicadoNormal, 2000);
 			for (ImageButton cacador : cacadores) {
 				cacador.setOnClickListener(new View.OnClickListener() {
 					
@@ -146,7 +155,7 @@ public class GameActivity extends Activity {
 				    handler.postDelayed(this, 1000);
 			    }
 			};
-			handler.postDelayed(naoClicadoDificil, 1000);
+			
 			
 			final Runnable ClicadoDificil = new Runnable()
 			{
@@ -156,7 +165,7 @@ public class GameActivity extends Activity {
 				    handler.postDelayed(naoClicadoDificil, 1000);
 			    }
 			};
-			
+			handler.postDelayed(ClicadoDificil, 1000);
 			for (ImageButton cacador : cacadores) {
 				cacador.setOnClickListener(new View.OnClickListener() {
 					
@@ -170,7 +179,8 @@ public class GameActivity extends Activity {
 			}
 		
 		}
-	}
+	 }
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -188,25 +198,20 @@ public class GameActivity extends Activity {
 		Random gerador = new Random();
 		int index = gerador.nextInt(12);
 		changeButtonVisibility(index, ImageButton.VISIBLE);
-	}
-	public void hideHunter()
-	{
-		for(int i=0;i<12;i++){
-		changeButtonVisibility(i, ImageButton.INVISIBLE);}
-	}
-
-//		for (Button button : list) {
-//			
-//			try {
-//				button.setVisibility(0);
-//				Thread.sleep(4000);
-//				button.setVisibility(1);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		
+	}		
+	    public void hideHunter()
+		{
+			setErros(getErros()+1);
+			checkGameOver();
+			for(int i=0;i<12;i++){
+			changeButtonVisibility(i, ImageButton.INVISIBLE);}
+		}
 	
-
+public void checkGameOver(){
+		Intent intent = new Intent(GameActivity.this, FimActivity.class);
+//	    Bundle params = new Bundle(); 
+//		params.putInt("pontuacao",pontuacao);
+//		intent.putExtras(params); 
+	    startActivity(intent);}
 }
+
