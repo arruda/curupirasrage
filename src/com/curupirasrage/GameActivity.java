@@ -22,7 +22,21 @@ import android.widget.ImageButton;
 import android.widget.TimePicker;
 
 public class GameActivity extends Activity {
-	int erros=0;
+	
+	private int erros = 0;
+	private int qtdPontos = 0;
+	
+	public int getQtdPontos()
+	{
+		return qtdPontos;
+	}
+	
+	public void setQtdPontos(int qtdPontos)
+	{
+		this.qtdPontos = qtdPontos;
+	}
+	
+	
 	public int getErros(){
 		return erros;
 	}
@@ -80,7 +94,7 @@ public class GameActivity extends Activity {
 			    {
 			    	hideHunter();
 				    showRandomHunter();
-			    handler.postDelayed(this, 3000);
+			        handler.postDelayed(this, 3000);
 		    	
 			    }
 			};
@@ -198,14 +212,17 @@ public class GameActivity extends Activity {
 		Random gerador = new Random();
 		int index = gerador.nextInt(12);
 		changeButtonVisibility(index, ImageButton.VISIBLE);
-	}		
-	    public void hideHunter()
-		{
-			setErros(getErros()+1);
-			checkGameOver();
-			for(int i=0;i<12;i++){
-			changeButtonVisibility(i, ImageButton.INVISIBLE);}
-		}
+	}	
+	
+	public void hideHunter()
+	{
+		setErros(getErros()+1);
+		checkGameOver();
+		
+		for(int i=0; i<cacadores.size(); i++){
+			changeButtonVisibility(i, ImageButton.INVISIBLE);
+			}
+    }
 	
 public void checkGameOver(){
 		Intent intent = new Intent(GameActivity.this, FimActivity.class);

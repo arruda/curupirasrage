@@ -28,7 +28,7 @@ public class DificuldadeActivity extends ActionBarActivity {
 			public void onClick(View v) {
 				Intent intent = new Intent(DificuldadeActivity.this, GameActivity.class);
 				Bundle params = new Bundle(); 
-				int dificuldade = 2;
+				int dificuldade = 1;
 				params.putInt("dificuldade",dificuldade);
 				intent.putExtras(params); 
 			    startActivity(intent);
