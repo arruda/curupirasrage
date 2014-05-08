@@ -1,15 +1,8 @@
 package com.curupirasrage;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.lang.Object;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
@@ -17,9 +10,8 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TimePicker;
+
 
 public class GameActivity extends Activity {
 	
@@ -78,124 +70,25 @@ public class GameActivity extends Activity {
 		cacadores.add(btn41);
 		cacadores.add(btn42);
 		cacadores.add(btn43);
-		final Handler handler = new Handler();
-
-		
-
-		Log.i("visibilidade", String.valueOf(cacadores.get(1).getVisibility()));
+	
+		//Log.i("visibilidade", String.valueOf(cacadores.get(1).getVisibility()));
 
 		Intent i = getIntent();
 		int dificuldade = i.getIntExtra("dificuldade", 1);
+		
 		if (dificuldade == 1) {
-
-			final Runnable naoClicadoFacil = new Runnable()
-			{
-			    public void run() 
-			    {
-			    	hideHunter();
-				    showRandomHunter();
-			        handler.postDelayed(this, 3000);
-		    	
-			    }
-			};
-			
-			final Runnable ClicadoFacil = new Runnable()
-			{
-			    public void run() 
-			    {
-				    showRandomHunter();
-				    handler.postDelayed(naoClicadoFacil, 3000);
-			    }
-			};
-
-			handler.postDelayed(ClicadoFacil, 3000);
-			for (ImageButton cacador : cacadores) {
-				cacador.setOnClickListener(new View.OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						v.setVisibility(ImageButton.INVISIBLE);
-						handler.removeCallbacks(naoClicadoFacil);
-						handler.postDelayed(ClicadoFacil, 0);
-					}
-				});
-			}
+			startGame (3000);	
 		}
 		
-		
 		if (dificuldade == 2) {
-			final Runnable naoClicadoNormal = new Runnable()
-			{
-			    public void run() 
-			    {
-			    	hideHunter();
-				    showRandomHunter();
-				    handler.postDelayed(this, 2000);
-			    }
-			};
-			
-			
-			final Runnable ClicadoNormal = new Runnable()
-			{
-			    public void run() 
-			    {
-				    showRandomHunter();
-				    handler.postDelayed(naoClicadoNormal, 2000);
-			    }
-			    
-			};
-			handler.postDelayed(ClicadoNormal, 2000);
-			for (ImageButton cacador : cacadores) {
-				cacador.setOnClickListener(new View.OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						v.setVisibility(ImageButton.INVISIBLE);
-						handler.removeCallbacks(naoClicadoNormal);
-						handler.postDelayed(ClicadoNormal, 0);
-					}
-				});
-			}
-		
+			startGame(2000);
 		}
 		
 		if (dificuldade == 3) {
-			final Runnable naoClicadoDificil = new Runnable()
-			{
-			    public void run() 
-			    {
-			    	hideHunter();
-				    showRandomHunter();
-				    handler.postDelayed(this, 1000);
-			    }
-			};
-			
-			
-			final Runnable ClicadoDificil = new Runnable()
-			{
-			    public void run() 
-			    {
-				    showRandomHunter();
-				    handler.postDelayed(naoClicadoDificil, 1000);
-			    }
-			};
-			handler.postDelayed(ClicadoDificil, 1000);
-			for (ImageButton cacador : cacadores) {
-				cacador.setOnClickListener(new View.OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						v.setVisibility(ImageButton.INVISIBLE);
-						handler.removeCallbacks(naoClicadoDificil);
-						handler.postDelayed(ClicadoDificil, 0);
-					}
-				});
-			}
-		
+			startGame(1000);
 		}
 	 }
 	
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -210,25 +103,64 @@ public class GameActivity extends Activity {
 	public void showRandomHunter()
 	{
 		Random gerador = new Random();
-		int index = gerador.nextInt(12);
+		int index = gerador.nextInt(cacadores.size());
 		changeButtonVisibility(index, ImageButton.VISIBLE);
 	}	
 	
 	public void hideHunter()
 	{
 		setErros(getErros()+1);
-		checkGameOver();
-		
 		for(int i=0; i<cacadores.size(); i++){
 			changeButtonVisibility(i, ImageButton.INVISIBLE);
-			}
+		}
     }
 	
-public void checkGameOver(){
+	public void startGame (final long milliseconds)
+	{
+		
+		final Handler handler = new Handler();
+		
+		final Runnable naoClicado = new Runnable()
+		{
+			public void run()
+			{
+				hideHunter();
+				showRandomHunter();
+				handler.postDelayed(this, milliseconds);
+			}
+		};
+
+		final Runnable Clicado = new Runnable()
+		{
+			public void run()
+			{
+				showRandomHunter();
+				handler.postDelayed(naoClicado, milliseconds);
+			}
+		};
+
+		handler.postDelayed(Clicado, milliseconds);
+
+		for (ImageButton cacador : cacadores) {
+			cacador.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					v.setVisibility(ImageButton.INVISIBLE);
+					setQtdPontos(getQtdPontos()+1);
+					handler.removeCallbacks(naoClicado);
+					handler.postDelayed(Clicado, 0);
+				}
+			});
+		}
+	}
+	
+     public void gameOver(){
 		Intent intent = new Intent(GameActivity.this, FimActivity.class);
-//	    Bundle params = new Bundle(); 
-//		params.putInt("pontuacao",pontuacao);
-//		intent.putExtras(params); 
-	    startActivity(intent);}
+	    Bundle params = new Bundle(); 
+        params.putInt("pontuacao", getQtdPontos());
+		intent.putExtras(params); 
+	    startActivity(intent);
+     }
 }
 
