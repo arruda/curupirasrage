@@ -23,6 +23,8 @@ public class GameActivity extends Activity {
 	long timeInMilliseconds = 0L;
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
+    int MAX_CACADORES_VISIVEIS = 4;
+    int cadadoresVisiveis = 0;
 
     //de quanto em quanto tempo vai rodar o timer em ms
     int timeTick = 250; 
@@ -76,9 +78,13 @@ public class GameActivity extends Activity {
 		cacadores.add(btn42);
 		cacadores.add(btn43);
 
-		changeButtonVisibility(0,ImageButton.VISIBLE);
 		Intent i = getIntent();
 		int dificuldade = i.getIntExtra("dificuldade", 1);
+
+
+		qtdPontos = 0;
+	    cadadoresVisiveis = 0;
+	    secsParaDarGG = 10;
 		timeTick = timeTick/dificuldade;
 
 
@@ -87,7 +93,8 @@ public class GameActivity extends Activity {
 
 				@Override
 				public void onClick(View v) {
-					v.setVisibility(ImageButton.INVISIBLE);
+					int pos_cacador = cacadores.indexOf(v);
+					changeButtonVisibility(pos_cacador, ImageButton.INVISIBLE);
 					setQtdPontos(getQtdPontos()+1);
 					secsParaDarGG+=1;
 				}
@@ -129,7 +136,17 @@ public class GameActivity extends Activity {
 	}
 
 	public void changeButtonVisibility(int pos, int visibility){
-		cacadores.get(pos).setVisibility(visibility);		
+		ImageButton cacador = cacadores.get(pos);	
+		if(cacador.getVisibility()!=visibility){
+
+			cacador.setVisibility(visibility);
+			if(visibility == ImageButton.VISIBLE){
+				cadadoresVisiveis+=1;
+			}
+			else{
+				cadadoresVisiveis-=1;			
+			}
+		}
 	}
 	
 	public void randomizarCacadoresVisiveis(){
@@ -146,14 +163,23 @@ public class GameActivity extends Activity {
 	public void randCacadorVisibility(int cacadorPos){
 
 		Random gerador = new Random();
-		boolean visible = gerador.nextBoolean();
-		if(visible){
-			changeButtonVisibility(cacadorPos, ImageButton.VISIBLE);
+		int randomMax = 2;
+		//se ja estiver visivel torna mais facil ficar invisivel
+		// na proporcao de 2/3 no lugar de 1/2
+		if(cacadores.get(cacadorPos).getVisibility() == ImageButton.VISIBLE){
+			randomMax +=1;
 		}
-		else{
+		int visible = gerador.nextInt(randomMax);
+		
+		if(cadadoresVisiveis <= MAX_CACADORES_VISIVEIS){
 
-			changeButtonVisibility(cacadorPos, ImageButton.INVISIBLE);
+			if(visible == 0){
+				changeButtonVisibility(cacadorPos, ImageButton.VISIBLE);
+				return;
+			}
 		}
+		//vem para ca caso tenha randomizado 1 de (0-1) ou 1, 2 de (0-2)
+		changeButtonVisibility(cacadorPos, ImageButton.INVISIBLE);
 	}
 	
 	
