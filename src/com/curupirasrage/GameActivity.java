@@ -81,7 +81,6 @@ public class GameActivity extends Activity {
 
 				@Override
 				public void onClick(View v) {
-					gameOver();
 					v.setVisibility(ImageButton.INVISIBLE);
 					setQtdPontos(getQtdPontos()+1);
 				}
@@ -89,8 +88,8 @@ public class GameActivity extends Activity {
 		}
 
 		
-//		startTime = SystemClock.uptimeMillis();
-//        gameHandler.postDelayed(updateTimerThread, 0);
+		startTime = SystemClock.uptimeMillis();
+        gameHandler.postDelayed(updateTimerThread, 250);
 		
 	 }
 	
@@ -145,8 +144,8 @@ public class GameActivity extends Activity {
 	 
      public void gameOver(){
     	 
-//    	 gameHandler.removeCallbacks(updateTimerThread);
-//    	 Log.i("GAMEOVEEEER", "deu gameover");
+    	 gameHandler.removeCallbacks(updateTimerThread);
+    	 Log.i("GAMEOVEEEER", "deu gameover");
 		Intent intent = new Intent(GameActivity.this, FimActivity.class);
 //	    Bundle params = new Bundle(); 
 //        params.putInt("pontuacao", getQtdPontos());
