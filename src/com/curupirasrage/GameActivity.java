@@ -71,6 +71,7 @@ public class GameActivity extends Activity {
 		cacadores.add(btn42);
 		cacadores.add(btn43);
 
+		changeButtonVisibility(0,ImageButton.VISIBLE);
 		Intent i = getIntent();
 		int dificuldade = i.getIntExtra("dificuldade", 1);
 
@@ -80,6 +81,7 @@ public class GameActivity extends Activity {
 
 				@Override
 				public void onClick(View v) {
+					gameOver();
 					v.setVisibility(ImageButton.INVISIBLE);
 					setQtdPontos(getQtdPontos()+1);
 				}
@@ -87,8 +89,8 @@ public class GameActivity extends Activity {
 		}
 
 		
-		startTime = SystemClock.uptimeMillis();
-        gameHandler.postDelayed(updateTimerThread, 0);
+//		startTime = SystemClock.uptimeMillis();
+//        gameHandler.postDelayed(updateTimerThread, 0);
 		
 	 }
 	
@@ -143,13 +145,13 @@ public class GameActivity extends Activity {
 	 
      public void gameOver(){
     	 
-//		Intent intent = new Intent(GameActivity.this, FimActivity.class);
+//    	 gameHandler.removeCallbacks(updateTimerThread);
+//    	 Log.i("GAMEOVEEEER", "deu gameover");
+		Intent intent = new Intent(GameActivity.this, FimActivity.class);
 //	    Bundle params = new Bundle(); 
 //        params.putInt("pontuacao", getQtdPontos());
 //		intent.putExtras(params); 
-//	    startActivity(intent);
-    	 gameHandler.removeCallbacks(updateTimerThread);
-    	 Log.i("GAMEOVEEEER", "deu gameover");
+	    startActivity(intent);
      }
 }
 
