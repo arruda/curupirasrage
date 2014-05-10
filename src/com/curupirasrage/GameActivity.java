@@ -202,11 +202,13 @@ public class GameActivity extends Activity {
     	 Log.i("GAMEOVEEEER", "deu gameover");
     	 Log.i("GAMEOVEEEER", "pts: "+getQtdPontos());
     	 Log.i("GAMEOVEEEER", "secsTotais: "+secsParaDarGG);
-		Intent intent = new Intent(GameActivity.this, FimActivity.class);
-//	    Bundle params = new Bundle(); 
-//        params.putInt("pontuacao", getQtdPontos());
-//		intent.putExtras(params); 
-	    startActivity(intent);
+		
+    	 Intent intent = new Intent(GameActivity.this, FimActivity.class);
+		 Bundle params = new Bundle(); 
+		 int pontosAcumulados = getQtdPontos();
+		 params.putInt("pontuacao", pontosAcumulados);
+		 intent.putExtras(params); 
+		 startActivity(intent);   
      }
 }
 

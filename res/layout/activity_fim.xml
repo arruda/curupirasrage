@@ -1,16 +1,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".FimActivity" >
+    android:background="@drawable/curupira_hd_002"
+    tools:context="com.curupirasrage.MainActivity"
+    tools:ignore="MergeRootFrame" >
 
     <TextView
+        android:id="@+id/textViewGameOver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/msgFinal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffff8800"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textFrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewGameOver"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="146dp"
+        android:text="@string/pontuacao"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ff99cc00"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+    
+      <TextView
+          android:id="@+id/textPontuacao"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/textFrase"
+          android:layout_centerHorizontal="true"
+          android:textColor="#ff99cc00"
+          android:textSize="50sp"
+          android:textStyle="bold" />
 
 </RelativeLayout>
+    

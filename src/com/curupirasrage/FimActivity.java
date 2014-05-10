@@ -2,7 +2,9 @@ package com.curupirasrage;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.widget.TextView;
 
 public class FimActivity extends Activity {
 
@@ -10,6 +12,13 @@ public class FimActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fim);
+		
+		Intent i = getIntent();
+		int pontos = i.getIntExtra("pontuacao", 0);
+		String strPontuacao = String.valueOf(pontos);
+		
+		TextView txtPontos = (TextView) findViewById(R.id.textPontuacao);
+		txtPontos.setText(strPontuacao);
 	}
 
 	@Override

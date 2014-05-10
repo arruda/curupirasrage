@@ -15,5 +15,7 @@
     <string name="title_activity_game">GameActivity</string>
     <string name="cacador">Caçador</string>
     <string name="title_activity_fim">FimActivity</string>
+    <string name="msgFinal">FIM DE JOGO !</string>
+    <string name="pontuacao">Sua pontuação foi: </string>
 
 </resources>
