@@ -97,23 +97,18 @@ public class GameActivity extends Activity {
 
 		public void run() {
 			Log.i("TIMER", "começo");
-
+			
 			timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
 
 			updatedTime = timeSwapBuff + timeInMilliseconds;
-
-			int secs = (int) (updatedTime / 1000);
-
-			String timerTxt = String.format("%02d", secs);
 			
-			Log.i("TIMER", timerTxt);
+			randomizarCacadoresVisiveis();
 
-			if(secs <= 10){
-				gameHandler.postDelayed(this, 1000);
-				
+			if(checkGameOver()){
+				gameOver();
 			}
 			else{
-				gameOver();
+				gameHandler.postDelayed(updateTimerThread, 1000);
 			}
 		}
 
@@ -130,16 +125,43 @@ public class GameActivity extends Activity {
 		cacadores.get(pos).setVisibility(visibility);		
 	}
 	
-	public void showRandomHunter()
+	public void randomizarCacadoresVisiveis(){
+		randCacadorVisibility(selectRandomHunter());
+	}
+	
+	public int selectRandomHunter()
 	{
 		Random gerador = new Random();
 		int index = gerador.nextInt(cacadores.size());
-		changeButtonVisibility(index, ImageButton.VISIBLE);
+		return index;
 	}	
+	
+	public void randCacadorVisibility(int cacadorPos){
+
+		Random gerador = new Random();
+		boolean visible = gerador.nextBoolean();
+		if(visible){
+			changeButtonVisibility(cacadorPos, ImageButton.VISIBLE);
+		}
+		else{
+
+			changeButtonVisibility(cacadorPos, ImageButton.INVISIBLE);
+		}
+	}
 	
 	
 	 public boolean checkGameOver(){
-		 return false;
+		 
+		 	int numSecsParaGG = 10;
+
+			int secs = (int) (updatedTime / 1000);
+
+			String timerTxt = String.format("%02d", secs);
+			
+			Log.i("TIMER", timerTxt);
+
+			return secs > numSecsParaGG;
+			
 	 }
 	 
      public void gameOver(){
