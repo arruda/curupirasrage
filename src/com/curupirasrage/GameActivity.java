@@ -24,6 +24,11 @@ public class GameActivity extends Activity {
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
 
+    //de quanto em quanto tempo vai rodar o timer em ms
+    int timeTick = 250; 
+    
+    int secsParaDarGG = 10;
+    
 	private int qtdPontos = 0;
 	
 	public int getQtdPontos()
@@ -74,6 +79,7 @@ public class GameActivity extends Activity {
 		changeButtonVisibility(0,ImageButton.VISIBLE);
 		Intent i = getIntent();
 		int dificuldade = i.getIntExtra("dificuldade", 1);
+		timeTick = timeTick/dificuldade;
 
 
 		for (ImageButton cacador : cacadores) {
@@ -83,6 +89,7 @@ public class GameActivity extends Activity {
 				public void onClick(View v) {
 					v.setVisibility(ImageButton.INVISIBLE);
 					setQtdPontos(getQtdPontos()+1);
+					secsParaDarGG+=1;
 				}
 			});
 		}
@@ -108,7 +115,7 @@ public class GameActivity extends Activity {
 				gameOver();
 			}
 			else{
-				gameHandler.postDelayed(updateTimerThread, 1000);
+				gameHandler.postDelayed(updateTimerThread, timeTick);
 			}
 		}
 
@@ -152,7 +159,6 @@ public class GameActivity extends Activity {
 	
 	 public boolean checkGameOver(){
 		 
-		 	int numSecsParaGG = 10;
 
 			int secs = (int) (updatedTime / 1000);
 
@@ -160,7 +166,7 @@ public class GameActivity extends Activity {
 			
 			Log.i("TIMER", timerTxt);
 
-			return secs > numSecsParaGG;
+			return secs > secsParaDarGG;
 			
 	 }
 	 
@@ -168,6 +174,8 @@ public class GameActivity extends Activity {
     	 
     	 gameHandler.removeCallbacks(updateTimerThread);
     	 Log.i("GAMEOVEEEER", "deu gameover");
+    	 Log.i("GAMEOVEEEER", "pts: "+getQtdPontos());
+    	 Log.i("GAMEOVEEEER", "secsTotais: "+secsParaDarGG);
 		Intent intent = new Intent(GameActivity.this, FimActivity.class);
 //	    Bundle params = new Bundle(); 
 //        params.putInt("pontuacao", getQtdPontos());
