@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -16,8 +17,13 @@ import android.widget.ImageButton;
 
 public class GameActivity extends Activity {
 	
-	private Handler gameHandler;
+	private Handler gameHandler = new Handler();
 	
+    private long startTime = 0L;
+	long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
+
 	private int qtdPontos = 0;
 	
 	public int getQtdPontos()
@@ -65,6 +71,10 @@ public class GameActivity extends Activity {
 		cacadores.add(btn42);
 		cacadores.add(btn43);
 
+		Intent i = getIntent();
+		int dificuldade = i.getIntExtra("dificuldade", 1);
+
+
 		for (ImageButton cacador : cacadores) {
 			cacador.setOnClickListener(new View.OnClickListener() {
 
@@ -76,10 +86,37 @@ public class GameActivity extends Activity {
 			});
 		}
 
-		Intent i = getIntent();
-		int dificuldade = i.getIntExtra("dificuldade", 1);
+		
+		startTime = SystemClock.uptimeMillis();
+        gameHandler.postDelayed(updateTimerThread, 0);
 		
 	 }
+	
+	private Runnable updateTimerThread = new Runnable() {
+
+		public void run() {
+			Log.i("TIMER", "começo");
+
+			timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+
+			updatedTime = timeSwapBuff + timeInMilliseconds;
+
+			int secs = (int) (updatedTime / 1000);
+
+			String timerTxt = String.format("%02d", secs);
+			
+			Log.i("TIMER", timerTxt);
+
+			if(secs <= 10){
+				gameHandler.postDelayed(this, 1000);
+				
+			}
+			else{
+				gameOver();
+			}
+		}
+
+	};
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -111,7 +148,7 @@ public class GameActivity extends Activity {
 //        params.putInt("pontuacao", getQtdPontos());
 //		intent.putExtras(params); 
 //	    startActivity(intent);
-    	 
+    	 gameHandler.removeCallbacks(updateTimerThread);
     	 Log.i("GAMEOVEEEER", "deu gameover");
      }
 }
