@@ -106,6 +106,19 @@ public class GameActivity extends Activity {
         gameHandler.postDelayed(updateTimerThread, 250);
 		
 	 }
+
+	@Override
+	protected void onPause() {
+		finish();
+		super.onPause();
+		
+	}
+	
+	@Override
+	protected void onStop(){
+		super.finish();
+		gameHandler.removeCallbacks(updateTimerThread);
+	}
 	
 	private Runnable updateTimerThread = new Runnable() {
 
