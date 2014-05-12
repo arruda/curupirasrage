@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class FimActivity extends Activity {
@@ -19,6 +21,16 @@ public class FimActivity extends Activity {
 		
 		TextView txtPontos = (TextView) findViewById(R.id.textPontuacao);
 		txtPontos.setText(strPontuacao);
+
+		Button btReturnMenu = (Button) findViewById(R.id.returnMenu);
+		btReturnMenu.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(FimActivity.this, MainActivity.class);
+			    startActivity(intent);
+			}
+		});
 	}
 
 	@Override
