@@ -109,15 +109,21 @@ public class GameActivity extends Activity {
 
 	@Override
 	protected void onPause() {
-		finish();
+		gameHandler.removeCallbacks(updateTimerThread);
 		super.onPause();
 		
 	}
 	
 	@Override
 	protected void onStop(){
-		super.finish();
 		gameHandler.removeCallbacks(updateTimerThread);
+		super.onStop();
+	}
+	
+	@Override
+	protected void onResume(){
+		gameHandler.postDelayed(updateTimerThread, timeTick);
+		super.onResume();
 	}
 	
 	private Runnable updateTimerThread = new Runnable() {
